@@ -4,17 +4,6 @@
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="..\common\model.fs">
-            <Link>model.fs</Link>
-        </Compile>
-        <Compile Include="utils.fs" />
-        <Compile Include="comment.fs" />
         <Compile Include="main.fs" />
-        <Content Include="*.fsproj; *.fs" />
-        <Content Include="component.js" />
     </ItemGroup>
-    <ItemGroup>
-        <Content Include="assets\img\favicon.svg" />
-    </ItemGroup>
-    <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
