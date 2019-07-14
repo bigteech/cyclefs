@@ -8,8 +8,36 @@ open Operators
 module R = Fable.Helpers.React
 
 module private Helper =
-    let getComponent (f1, f2, f3, f4) =
-        importDefault "./component.js"
+    [<Emit("(function(f1, f2, f3, f4, f5) {
+    return class Temp extends f5.Component {
+        constructor(props) {
+            super(props);
+            this.state= {};
+            f4([props, (function(p) {
+                this.state[p[0]] = p[1];
+            }).bind(this)]);
+            f1((function(p) {
+                this.state[p[0]] = p[1];
+                this.setState(this.state);
+            }).bind(this))
+        }
+
+        unMounted() {
+            f2();
+        }
+
+        render() {
+            return f3(this.state);
+        }
+    }
+    return function(p) {
+        return function(k) {
+            return React.createElement(Temp, p, k)
+        }
+    }
+})($0, $1, $2, $3, $4)")>]
+    let getComponent (f1, f2, f3, f4) = jsNative
+        
     
     type KV = {
         name : string;
@@ -60,7 +88,8 @@ let ToView<'T> (x:('T -> React.ReactElement)) =
                             i.DisposeAsync() |> ignore
                 ),
                 x,
-                construct
+                construct,
+                R
             )
     ret
 
