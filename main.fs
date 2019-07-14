@@ -9,7 +9,7 @@ module R = Fable.Helpers.React
 
 module private Helper =
     [<Emit("(function(f1, f2, f3, f4, f5) {
-    return class Temp extends f5.Component {
+    return class Temp extends f5 {
         constructor(props) {
             super(props);
             this.state= {};
@@ -89,7 +89,7 @@ let ToView<'T> (x:('T -> React.ReactElement)) =
                 ),
                 x,
                 construct,
-                R
+                R.Component
             )
     ret
 
