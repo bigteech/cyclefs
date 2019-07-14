@@ -75,5 +75,5 @@ module App
 ```
 
 #use
-add github bigteech/cyclefs main.fs  to paket.dependencies
-add File:main.fs to paket.references
+add **github bigteech/cyclefs main.fs**  to paket.dependencies  
+add **File:main.fs** to paket.references
