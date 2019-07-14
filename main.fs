@@ -25,7 +25,7 @@ module private Helper =
             }).bind(this))
         }
 
-        unMounted() {
+        componentWillUnmount() {
             f2();
         }
 
@@ -39,7 +39,7 @@ module private Helper =
         }
     }
 })($0, $1, $2, $3, $4)")>]
-    let getComponent (f1, f2, f3, f4, f5) = jsNative
+    let getComponent (funToSetState, funToUnmount, funToRender, handleProps, react) = jsNative
         
     
     type KV = {
