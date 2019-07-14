@@ -5,11 +5,14 @@ open Fable.Core.JsInterop
 open FSharp.Control
 open Fable.Import
 open Operators
-module R = Fable.Helpers.React
+
+
+let react: Object =
+    importDefault "react"
 
 module private Helper =
     [<Emit("(function(f1, f2, f3, f4, f5) {
-    return class Temp extends f5 {
+    class Temp extends f5.Component {
         constructor(props) {
             super(props);
             this.state= {};
@@ -32,7 +35,7 @@ module private Helper =
     }
     return function(p) {
         return function(k) {
-            return React.createElement(Temp, p, k)
+            return f5.createElement(Temp, p, k)
         }
     }
 })($0, $1, $2, $3, $4)")>]
@@ -89,7 +92,7 @@ let ToView<'T> (x:('T -> React.ReactElement)) =
                 ),
                 x,
                 construct,
-                R.Component
+                react
             )
     ret
 
